@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
-
+  definePageMeta({
+    layout: 'products'
+  })
 </script>
 <template>
   <div>

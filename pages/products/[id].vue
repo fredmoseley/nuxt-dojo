@@ -1,12 +1,19 @@
 <script setup>
-import { ref } from "vue";
-const { id } = useRoute().params
+import { ref } from 'vue';
+const { id } = useRoute().params;
+
+definePageMeta({
+    layout: 'products'
+});
 </script>
 <template>
-  <div>
-    Product details for: {{ id }}
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus atque dicta aut voluptates distinctio corporis quos, omnis, ipsa ratione tempora voluptate autem ipsum dolore deleniti facilis nobis aspernatur alias magni?</p>
-  </div>
+    <div>
+        Product details for: {{ id }}
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus atque dicta aut voluptates distinctio corporis quos, omnis, ipsa ratione tempora voluptate autem
+            ipsum dolore deleniti facilis nobis aspernatur alias magni?
+        </p>
+    </div>
 </template>
 
 <style scoped></style>
