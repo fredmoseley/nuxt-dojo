@@ -9,7 +9,9 @@
 
 
   // call that uses apiKey
-  const {data} = await useFetch('/api/ninja')
+  // const {data} = await useFetch('/api/ninja')
+
+  const { data } = await useFetch(`/api/weather/94552`)
 </script>
 <template>
     <div>
