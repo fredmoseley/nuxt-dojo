@@ -9,5 +9,8 @@ export default defineNuxtConfig({
             meta: [{ name: 'description', content: 'Everything about Nuxt3' }],
             link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }]
         }
+    },
+    runtimeConfig: {
+        weatherAPIKey: process.env.WEATHER_API_KEY
     }
 });
