@@ -13,6 +13,9 @@
                     <li>
                         <nuxt-link to="/products" class="btn">Products</nuxt-link>
                     </li>
+                    <li>
+                        <nuxt-link to="/products/abc">client-error</nuxt-link>
+                    </li>
                 </ul>
             </nav>
         </header>
