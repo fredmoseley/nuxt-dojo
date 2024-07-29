@@ -4,6 +4,13 @@ definePageMeta({
 });
 
 const { data: products } = await useFetch('https://fakestoreapi.com/products');
+// composable to override head section set in nuxt.config.ts
+useHead({
+    title: 'Nuxt Dojo | Merch',
+    meta: [
+        {name: 'description', content: 'Nuxt 3 Merch'}
+    ]
+})
 </script>
 <template>
     <div>
