@@ -1,11 +1,10 @@
 <template>
     <div>
         <header class="shadow-sm bg-white">
-        <nav class="container mx-auto p-4">
-            <nuxt-link to="/products"  class="font-bold">Nuxt Dojo Merch</nuxt-link>
-           
-        </nav>
-    </header>
+            <nav class="container mx-auto p-4">
+                <nuxt-link to="/products" class="font-bold">Nuxt Dojo Merch</nuxt-link>
+            </nav>
+        </header>
         <!-- Output the page content -->
         <div class="container mx-auto p-4">
             <slot />
@@ -28,7 +27,7 @@
 </template>
 
 <style>
-    .router-link-exact-active {
-        color: #12b488
-    }
+.router-link-exact-active {
+    color: #12b488;
+}
 </style>

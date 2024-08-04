@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
     const { zipcode } = event.context.params;
-    console.log('zipcode:', zipcode);
+    console.log('server api zipcode:', zipcode);
     const { lat, lon } = {
         lat: 37.696255,
         lon: -122.049904
