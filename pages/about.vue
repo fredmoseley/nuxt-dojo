@@ -12,7 +12,6 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem nesciunt facilis incidunt necessitatibus voluptatum quae vitae earum fugit, nam molestias maiores
             cupiditate rerum, labore iure sed eaque quidem at! Rem!
         </p>
-        {{ data }}
     </div>
 </template>
 
