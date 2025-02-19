@@ -1,20 +1,22 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "h3": "^1.12.0",
-    "nuxt": "^3.12.4",
-    "vue": "latest"
-  },
-  "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.1"
-  }
+    "name": "nuxt-app",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "nuxi build",
+        "dev": "nuxi dev",
+        "generate": "nuxi generate",
+        "preview": "nuxi preview",
+        "postinstall": "nuxi prepare"
+    },
+    "dependencies": {
+        "@nuxt/ui": "^2.21.0",
+        "@nuxtjs/supabase": "^1.4.6",
+        "h3": "^1.12.0",
+        "nuxt": "^3.12.4",
+        "vue": "latest"
+    },
+    "devDependencies": {
+        "@nuxtjs/tailwindcss": "^6.12.1"
+    }
 }

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: { enabled: true },
-    modules: ['@nuxtjs/tailwindcss'],
+    modules: ['@nuxtjs/supabase', '@nuxt/ui'],
     app: {
         head: {
             title: 'Nuxt Dojo',
@@ -11,6 +11,8 @@ export default defineNuxtConfig({
         }
     },
     runtimeConfig: {
-        weatherAPIKey: process.env.WEATHER_API_KEY
+        public: {
+            baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+        }
     }
 });

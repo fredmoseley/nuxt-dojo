@@ -1,79 +1,49 @@
-<script setup lang="ts">
-const callCount = ref(0);
+<script setup >
+const user = useSupabaseUser();
+const { auth } = useSupabaseClient();
 
-const username = ref('admin');
-const password = ref('');
-const body = computed(() => ({
-    username: username.value,
-    password: password.value
-}));
-
-const didItWork = ref(false);
-// BAD using useFetch in a handler
-/*async function onSubmit() {
-console.log('body',body.value)
-  const {data, error} = await useFetch('http://localhost:3030/api/login', {
-    method: 'POST',
-    body,
-    onResponse() {
-        callCount.value++
-    }
-  })
-  if (!error.value) {
-    didItWork.value = true
+watchEffect(() => {
+  if (user.value) {
+    navigateTo('/products')
   }
-}
-  */
-//  USE $fetch
-async function onSubmit() {
-    console.log('body', body.value);
-    try {
-        const { data, error } = await $fetch('http://localhost:3030/api/login', {
-            method: 'POST',
-            body: JSON.stringify(body.value), // Convert the body to JSON string
-            headers: {
-                'Content-Type': 'application/json'
-            }, // Set t
-            onResponse() {
-                callCount.value++;
-            }
-        });
-        didItWork.value = true;
-    } catch (e) {
-        console.error(e);
-    }
-}
-// useFetch should only be used at the top level
-const { data, error, execute } = await useFetch('http://localhost:3030/api/login', {
-    method: 'POST',
-    body,
-    immediate: false,   //don't call until execute is called
-    watch: false,       //do not watch refs
-    onResponse() {
-        callCount.value++;
-    }
-});
+})
 
-async function onSubmitUseFetch() {
-    await execute();
-    if (!error.value) {
-        didItWork.value = true;
+const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`;
+
+const sigInWithAuth = async () => {
+    console.log("sigInWithAuth");
+    const { error } = await auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo }
+    });
+    if (error) {
+        console.log(error);
+    }
+}
+
+const signOut = async () => {
+    const { error } = await auth.signOut()
+    if (error) {
+        console.log(error);
     }
 }
 </script>
-<template>
-    <h1>Login</h1>
-    <form @submit.prevent="onSubmitUseFetch">
-        <label for="username">Username:</label>
-        <input data-1p-ignore id="username" type="text" placeholder="username" v-model="username" />
-        <label data-1p-ignore for="password">Password:</label>
-        <input id="password" type="password" v-model="password" />
-        <button type="submit">Login</button>
-    </form>
-    <p>Amount of calls: {{ callCount }}</p>
-    <br />
-    <br />
-    <p>Did it work? {{ didItWork }}</p>
+
+  <template>
+  <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <h2 class="my-6 text-center text-3xl font-extrabold">
+      Sign in to your account
+    </h2>
+    <LoginCard>
+      <UButton
+        class="mt-3"
+        icon="i-mdi-google"
+        block
+        label="Google"
+        @click="sigInWithAuth"
+      />
+    </LoginCard>
+  </div>
 </template>
 
 <style scoped></style>

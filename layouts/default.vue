@@ -1,3 +1,16 @@
+<script setup>
+const user=useSupabaseUser();
+const supabase=useSupabaseClient();
+
+const signOut = async ()=>{
+    const {error}=await supabase.auth.signOut();
+    if(error){
+        console.log(error);
+    }else{
+        navigateTo("/login");
+    }
+}
+</script>
 <template>
     <div>
         <header class="shawdow-sm bg-white">
@@ -15,6 +28,9 @@
                     </li>
                     <li>
                         <nuxt-link to="/products/abc">client-error</nuxt-link>
+                    </li>
+                    <li>
+                       <button v-if="user" @click="signOut" class="button">Logout</button>
                     </li>
                 </ul>
             </nav>
